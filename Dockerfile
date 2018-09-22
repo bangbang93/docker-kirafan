@@ -1,6 +1,7 @@
 FROM centos
 
 ENV NODE_VERSION latest
+ENV N_PREFIX "/opt/n"
 
 RUN yum group install "Development Tools" -y \
  && yum install epel-release -y \
@@ -11,4 +12,4 @@ RUN yum group install "Development Tools" -y \
  && pip3 install pyyaml pycryptodome unitypack \
  && curl -L https://git.io/n-install | bash -s -- -y -q ${NODE_VERSION}
 
- ENV N_PREFIX="${HOME}/n" PATH="${PATH}:${N_PREFIX}/bin"
+ ENV PATH "${PATH}:${N_PREFIX}/bin"
