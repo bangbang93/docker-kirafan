@@ -9,6 +9,6 @@ RUN yum group install "Development Tools" -y \
  && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
  && python3 get-pip.py \
  && pip3 install pyyaml pycryptodome unitypack \
- && curl -L https://git.io/n-install | bash -s -- -y ${NODE_VERSION}
+ && curl -L https://git.io/n-install | bash -s -- -y -q ${NODE_VERSION}
 
  ENV N_PREFIX="${HOME}/n" PATH="${PATH}:${N_PREFIX}/bin"
