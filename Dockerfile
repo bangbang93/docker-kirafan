@@ -1,6 +1,6 @@
 FROM centos
 
-ENV NODE_VERSION = latest
+ENV NODE_VERSION latest
 
 RUN yum group install "Development Tools" -y \
  && yum install epel-release -y \
