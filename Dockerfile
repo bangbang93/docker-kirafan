@@ -12,9 +12,11 @@ RUN yum install python36-devel zlib-devel libpng-devel -y \
  && python3 get-pip.py \
  && pip3 install pyyaml pycryptodome unitypack
 
-RUN curl -L https://git.io/n-install | bash -s -- -y -q ${NODE_VERSION}
+RUN curl -L https://git.io/n-install | bash -s -- -y -q ${NODE_VERSION} \
+ && export PATH="${PATH}:${N_PREFIX}/bin" \
+ && npm config set cache .npm-cache
+
+ENV PATH "${PATH}:${N_PREFIX}/bin"
 
 RUN curl http://download.mono-project.com/repo/centos7-stable.repo -o /etc/yum.repos.d/mono.repo \
  && yum install -y mono-core
-
- ENV PATH "${PATH}:${N_PREFIX}/bin"
